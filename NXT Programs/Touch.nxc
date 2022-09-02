@@ -1,0 +1,32 @@
+task touch()
+{
+ SetSensorType(IN_1, SENSOR_TYPE_TOUCH);
+ SetSensorMode(IN_1, SENSOR_MODE_PULSE);
+ while(true)
+ {
+  ClearSensor(IN_1);
+  until (SENSOR_1 > 0);
+  Wait(2000);
+  if (SENSOR_1 == 1)
+  {
+   {OnFwd(OUT_A, 75);} {OnFwd(OUT_C, 70);}
+   until (SENSOR_1 == 2);
+   {Off(OUT_AC);}
+   ClearSensor(IN_1);
+  }
+  if (SENSOR_1 == 2)
+  {
+   {OnRev(OUT_A, 75);}
+   {OnFwd(OUT_C, 75);}
+   {Wait(400);}
+   {Off(OUT_AC);}
+  }
+  if (SENSOR_1 == 3)
+  {
+   {OnRev(OUT_A, 75);}
+   {OnFwd(OUT_C, 75);}
+   {Wait(800);}
+   {Off(OUT_AC);}
+  }
+ }
+}

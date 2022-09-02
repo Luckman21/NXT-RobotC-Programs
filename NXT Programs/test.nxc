@@ -1,0 +1,28 @@
+#define VOL 10
+
+int count, total;
+
+task main()
+{
+ count = 500;
+ while (true)
+ {
+  count = count - 50;
+  PlayToneEx(800,100,VOL,FALSE); Wait(count);
+  if (count == 0)
+  {
+   total = 0;
+   while (true)
+   {
+    PlayToneEx(800,100,VOL,FALSE); Wait(150);
+    total += 1;
+    if (total == 10)
+    {
+     PlayToneEx(800,1000,VOL,FALSE); Wait(1000);
+     PlayFileEx("Explosion+3.rso" ,VOL,FALSE); Wait(3000);
+     break;
+    }
+   }
+  }
+ }
+}

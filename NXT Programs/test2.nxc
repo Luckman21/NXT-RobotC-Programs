@@ -1,0 +1,29 @@
+#define THRESHOLD 40
+
+#define MIC SENSOR_2
+
+task main()
+
+{
+
+SetSensorSound(IN_2);
+
+while(true){
+
+until(MIC > THRESHOLD);
+
+OnRev(OUT_C, 100);
+
+
+
+OnFwd(OUT_A, 100);
+
+until(MIC > THRESHOLD);
+
+Wait(800);
+
+Off(OUT_C);
+Off(OUT_A);
+}
+
+}

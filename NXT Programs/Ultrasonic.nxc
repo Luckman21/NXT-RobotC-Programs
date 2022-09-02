@@ -1,0 +1,45 @@
+#define THRESHOLD 40
+#define count 0
+
+task main()
+
+{
+
+SetSensorLight(IN_3);
+
+OnFwd(OUT_A, 55);
+OnFwd(OUT_C, 50);
+
+while (true)
+
+{
+
+if (Sensor(IN_3) > THRESHOLD)
+{
+if (count == 3)
+{
+OnFwd(OUT_A, 75);
+OnRev(OUT_C, 70);
+}
+}
+
+if (Sensor(IN_3) > THRESHOLD)
+
+{
+
+OnFwd(OUT_A, 75);
+OnFwd(OUT_C, 70);
+
+until(Sensor(IN_3) <= THRESHOLD);
+
+OnRev(OUT_A, 75);
+OnFwd(OUT_C, 75);
+Wait(400);
+
+count == count + 1
+
+}
+
+}
+
+}
